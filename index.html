@@ -84,9 +84,7 @@
 
     <button id="payButton">Pay $1</button>
 
-    <small>
-      Test mode — use card 4242 4242 4242 4242.
-    </small>
+
   </div>
 
 <script>
@@ -94,7 +92,7 @@
   const button = document.getElementById('payButton');
 
   // Simple static message
-  countElement.textContent = "Click the button to pay $1 (test mode).";
+  countElement.textContent = "Click the button to pay $1.";
 
   // Redirect to Stripe Payment Link
   button.addEventListener('click', () => {
