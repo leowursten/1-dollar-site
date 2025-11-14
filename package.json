@@ -1,0 +1,8 @@
+{
+  "name": "1-dollar-site",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.48.0"
+  }
+}
