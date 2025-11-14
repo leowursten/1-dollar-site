@@ -72,17 +72,41 @@
 <body>
   <div class="card">
     <h1>Thank you for your $1 🙌</h1>
-    <p>
-      Your payment was successful.
-    </p>
+
+    <p>Your payment was successful.</p>
 
     <p class="number-placeholder">
-      Soon: this will show your unique number (e.g. “You are person #37 who paid.”)
+      Getting your unique number...
     </p>
 
     <a href="/" class="button">Go back to the main page</a>
 
     <small>Test mode — this was not a real charge.</small>
   </div>
+
+  <script>
+    async function loadNumber() {
+      const target = document.querySelector('.number-placeholder');
+
+      try {
+        target.textContent = "Getting your number...";
+
+        const res = await fetch("/.netlify/functions/get-count");
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status);
+        }
+
+        const data = await res.json();
+        const count = data.count;
+
+        target.textContent = `You are person #${count} who paid $1.`;
+      } catch (err) {
+        console.error(err);
+        target.textContent = "Oops, we couldn't load your number. Please try again.";
+      }
+    }
+
+    loadNumber();
+  </script>
 </body>
 </html>
