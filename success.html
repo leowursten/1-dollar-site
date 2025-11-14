@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank you!</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #020617;
+      padding: 2rem 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      max-width: 480px;
+      text-align: center;
+      border: 1px solid #1f2937;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.98rem;
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+    }
+
+    .number-placeholder {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #e5e7eb;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      background: #22c55e;
+      color: #022c22;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+    }
+
+    a.button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(34,197,94,0.3);
+      background: #16a34a;
+    }
+
+    small {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Thank you for your $1 🙌</h1>
+    <p>
+      Your payment was successful.
+    </p>
+
+    <p class="number-placeholder">
+      Soon: this will show your unique number (e.g. “You are person #37 who paid.”)
+    </p>
+
+    <a href="/" class="button">Go back to the main page</a>
+
+    <small>Test mode — this was not a real charge.</small>
+  </div>
+</body>
+</html>
