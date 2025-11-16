@@ -3,106 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <title>Thank you!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
+      background: #f5f5f7;
+      color: #111827;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      margin: 0;
+      padding: 16px;
+    }
+
+    .wrapper {
+      max-width: 480px;
+      width: 100%;
     }
 
     .card {
-      background: #020617;
-      padding: 2rem 2.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-      max-width: 480px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 24px 22px 18px;
+      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
       text-align: center;
-      border: 1px solid #1f2937;
     }
 
     h1 {
-      font-size: 1.8rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
-    p {
+    .subtitle {
       font-size: 0.98rem;
-      color: #9ca3af;
-      margin-bottom: 1.5rem;
+      color: #4b5563;
+      margin-bottom: 18px;
     }
 
-    .number-placeholder {
-      font-size: 1.1rem;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #ecfdf3;
+      color: #166534;
+      font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: #e5e7eb;
+      border: 1px solid #bbf7d0;
+      margin-bottom: 14px;
+      gap: 6px;
     }
 
-    a.button {
-      display: inline-block;
-      padding: 0.8rem 1.6rem;
-      border-radius: 9999px;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 600;
-      background: #22c55e;
-      color: #022c22;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+    .number-card {
+      background: #f9fafb;
+      border-radius: 14px;
+      padding: 14px 16px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 16px;
     }
 
-    a.button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba(34,197,94,0.3);
-      background: #16a34a;
-    }
-
-    small {
-      display: block;
-      margin-top: 1rem;
-      font-size: 0.8rem;
+    .number-label {
+      font-size: 0.9rem;
       color: #6b7280;
+      margin-bottom: 6px;
+    }
+
+    .number-value {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .number-sub {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    .actions {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      background: #111827;
+      color: #f9fafb;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.25);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.3);
+    }
+
+    .security-note {
+      margin-top: 16px;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .footer {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #9ca3af;
     }
   </style>
 </head>
+
 <body>
-  <div class="card">
-    <h1>Thank you for your $1 🙌</h1>
+  <div class="wrapper">
+    <div class="card">
+      <h1>Thank you for your $1 🎉</h1>
 
-    <p>Your payment was successful.</p>
+      <p class="subtitle">
+        Your payment was successful.  
+        Here’s your unique number.
+      </p>
 
-    <p class="number-placeholder">
-      Getting your unique number...
-    </p>
+      <div class="badge">
+        <span>✅</span>
+        <span>Payment confirmed via Stripe</span>
+      </div>
 
-    <a href="/" class="button">Go back to the main page</a>
+      <div class="number-card">
+        <div class="number-label">Your number is:</div>
+        <div class="number-value" id="userNumber">Loading...</div>
+        <div class="number-sub" id="peopleBefore"></div>
+      </div>
 
+      <div class="actions">
+        <a href="/" class="btn">
+          <span>🏠</span>
+          <span>Back to homepage</span>
+        </a>
+      </div>
 
+      <p class="security-note">
+        Payments are handled securely by Stripe.  
+        We never store card details.
+      </p>
+    </div>
+
+    <div class="footer">
+      © 2025 · Fun side project. No resale of personal data.
+    </div>
   </div>
 
   <script>
     async function loadNumber() {
-      const target = document.querySelector('.number-placeholder');
+      const numberEl = document.getElementById('userNumber');
+      const beforeEl = document.getElementById('peopleBefore');
 
       try {
-        target.textContent = "Getting your number...";
+        numberEl.textContent = "Loading...";
 
         const res = await fetch("/.netlify/functions/get-count");
-        if (!res.ok) {
-          throw new Error("HTTP " + res.status);
-        }
+
+        if (!res.ok) throw new Error("HTTP " + res.status);
 
         const data = await res.json();
         const count = data.count;
 
-        target.textContent = `You are person #${count} who paid $1.`;
+        numberEl.textContent = `#${count}`;
+        beforeEl.textContent = `${count - 1} people paid before you.`;
       } catch (err) {
         console.error(err);
-        target.textContent = "Oops, we couldn't load your number. Please try again.";
+        numberEl.textContent = "Error";
+        beforeEl.textContent = "We couldn't load your number. Please try again.";
       }
     }
 

@@ -3,44 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <title>Pay to know your number</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
+      background: #f5f5f7;
+      color: #111827;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      margin: 0;
+      padding: 16px;
+    }
+
+    .wrapper {
+      max-width: 480px;
+      width: 100%;
     }
 
     .card {
-      background: #020617;
-      padding: 2rem 2.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-      max-width: 460px;
-      text-align: center;
-      border: 1px solid #1f2937;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 24px 22px 18px;
+      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
     }
 
     h1 {
-      font-size: 1.8rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-align: center;
     }
 
-    p.description {
-      font-size: 0.95rem;
-      color: #9ca3af;
-      margin-bottom: 1.5rem;
+    .subtitle {
+      font-size: 0.98rem;
+      color: #6b7280;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .subtitle .highlight {
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .steps {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .steps-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .steps ol {
+      margin-left: 18px;
+      color: #4b5563;
+    }
+
+    .steps li {
+      margin-bottom: 4px;
+    }
+
+    .hint {
+      font-size: 0.86rem;
+      color: #6b7280;
+      margin-bottom: 8px;
     }
 
     .buttons {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 1.2rem;
+      gap: 8px;
+      margin-bottom: 10px;
+      margin-top: 4px;
     }
 
     button {
@@ -51,72 +101,155 @@
       cursor: pointer;
       font-size: 0.95rem;
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
       transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
 
     button.primary {
-      background: #22c55e;
-      color: #022c22;
+      background: #111827;
+      color: #f9fafb;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.25);
     }
 
     button.primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba(34,197,94,0.3);
-      background: #16a34a;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.3);
     }
 
     button.secondary {
-      background: transparent;
-      color: #e5e7eb;
-      border: 1px solid #4b5563;
+      background: #f3f4f6;
+      color: #111827;
+      border: 1px solid #e5e7eb;
     }
 
     button.secondary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba(148,163,184,0.2);
-      background: #020617;
-      border-color: #9ca3af;
+      background: #e5e7eb;
+    }
+
+    .btn-icon {
+      font-size: 1rem;
     }
 
     small {
       display: block;
-      margin-top: 0.75rem;
-      font-size: 0.8rem;
+      margin-top: 4px;
+      font-size: 0.78rem;
       color: #6b7280;
+      text-align: center;
     }
 
-    .hint {
+    .security-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 8px;
+      margin-top: 12px;
+    }
+
+    .security-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lock-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .security-label {
+      font-weight: 500;
+      color: #374151;
       font-size: 0.8rem;
+    }
+
+    .security-sub {
+      font-size: 0.7rem;
+    }
+
+    .footer {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 0.75rem;
       color: #9ca3af;
-      margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .card {
+        padding: 26px 26px 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Pay to know your number</h1>
+  <div class="wrapper">
+    <div class="card">
+      <h1>Pay to know your number</h1>
 
-    <p class="description">
-      Pay 1$ to discover how many people paid before you.
-    </p>
+      <p class="subtitle">
+        Pay <span class="highlight">$1</span> to discover how many people paid before you
+        and which number you are in the list.
+      </p>
 
-    <p class="hint">
-      Choose your payment method:
-    </p>
+      <div class="steps">
+        <div class="steps-title">How it works</div>
+        <ol>
+          <li>You pay $1 to access the page.</li>
+          <li>You see how many people have already paid before you.</li>
+          <li>Your own number is added anonymously to the count.</li>
+        </ol>
+      </div>
 
-    <div class="buttons">
-      <button id="payUsd" class="primary">
-        Pay $1 
-      </button>
+      <p class="hint">Choose your payment method:</p>
 
-      <button id="payTwint" class="secondary">
-        Pay 1 CHF with TWINT 
-      </button>
+      <div class="buttons">
+        <button id="payUsd" class="primary">
+          <span class="btn-icon">💳</span>
+          <span>Pay $1 by card </span>
+                </button>
+
+        <button id="payTwint" class="secondary">
+          <span class="btn-icon">📲</span>
+          <span>Pay 1 CHF with TWINT</span>
+        </button>
+      </div>
+
+      <small>
+        Payments are processed by Stripe over HTTPS.  
+        We never see or store your card details.
+      </small>
+
+      <div class="security-row">
+        <div class="security-left">
+          <div class="lock-badge">🔒</div>
+          <div>
+            <div class="security-label">Secure payment</div>
+            <div class="security-sub">Protected by Stripe & TLS encryption.</div>
+          </div>
+        </div>
+        <div>
+          <div class="security-label">Powered by Stripe</div>
+          <div class="security-sub">Global payment infrastructure, used by millions of businesses.</div>
+        </div>
+      </div>
     </div>
 
-    <small>
-      You’ll be redirected to a secure Stripe checkout. After payment, you’ll see your number.
-    </small>
+    <div class="footer">
+      © 2025 · Fun side project. No resale of personal data.
+    </div>
   </div>
 
   <script>
@@ -124,12 +257,12 @@
     const twintButton = document.getElementById('payTwint');
 
     usdButton.addEventListener('click', () => {
-      // Replace with your LIVE USD Stripe Payment Link
+      // LIVE USD Stripe Payment Link
       window.location.href = "https://buy.stripe.com/dRm3cv7NFgKp87X2J30Jq00";
     });
 
     twintButton.addEventListener('click', () => {
-      // Replace with your LIVE CHF + TWINT Stripe Payment Link
+      // LIVE CHF + TWINT Stripe Payment Link
       window.location.href = "https://buy.stripe.com/3cIfZhc3VfGlewldnH0Jq01";
     });
   </script>
