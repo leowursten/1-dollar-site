@@ -88,54 +88,72 @@
     .buttons {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 4px;
       margin-bottom: 10px;
       margin-top: 4px;
     }
 
     button {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
       width: 100%;
       padding: 0.8rem 1.2rem;
       border-radius: 9999px;
-      border: none;
-      cursor: pointer;
       font-size: 0.95rem;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-    }
-
-    button.primary {
       background: #111827;
       color: #f9fafb;
       box-shadow: 0 10px 20px rgba(15, 23, 42, 0.25);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
     }
 
-    button.primary:hover {
+    .btn-primary:hover {
       transform: translateY(-1px);
       box-shadow: 0 14px 28px rgba(15, 23, 42, 0.3);
-    }
-
-    button.secondary {
-      background: #f3f4f6;
-      color: #111827;
-      border: 1px solid #e5e7eb;
-    }
-
-    button.secondary:hover {
-      background: #e5e7eb;
     }
 
     .btn-icon {
       font-size: 1rem;
     }
 
+    .twint-wrapper {
+      margin-top: 4px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .twint-button {
+      background: none;
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: #4b5563;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    .twint-button:hover {
+      color: #111827;
+    }
+
     small {
       display: block;
-      margin-top: 4px;
+      margin-top: 6px;
       font-size: 0.78rem;
       color: #6b7280;
       text-align: center;
@@ -216,15 +234,17 @@
       <p class="hint">Choose your payment method:</p>
 
       <div class="buttons">
-        <button id="payUsd" class="primary">
+        <button id="payUsd" class="btn-primary">
           <span class="btn-icon">💳</span>
           <span>Pay $1 by card </span>
-                </button>
-
-        <button id="payTwint" class="secondary">
-          <span class="btn-icon">📲</span>
-          <span>Pay 1 CHF with TWINT</span>
         </button>
+
+        <div class="twint-wrapper">
+          Prefer TWINT ?
+          <button id="payTwint" class="twint-button" type="button">
+            <span>📲 Pay 1 CHF with TWINT</span>
+          </button>
+        </div>
       </div>
 
       <small>
@@ -242,7 +262,7 @@
         </div>
         <div>
           <div class="security-label">Powered by Stripe</div>
-          <div class="security-sub">Global payment infrastructure, used by millions of businesses.</div>
+          <div class="security-sub">Used by millions of businesses worldwide.</div>
         </div>
       </div>
     </div>
